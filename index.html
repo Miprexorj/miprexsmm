@@ -2,162 +2,123 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<title>303 Siber Güvenlik Ekibi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1. Yılımız 💖</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Consolas, monospace;
 }
 
-body{
-  min-height:100vh;
-  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+body {
+    background: #020617;
+    color: #00ff9c;
 }
 
-.card{
-  background:rgba(255,255,255,0.25);
-  backdrop-filter: blur(10px);
-  border-radius:24px;
-  padding:30px;
-  width:90%;
-  max-width:420px;
-  text-align:center;
-  color:#fff;
-  box-shadow:0 20px 40px rgba(0,0,0,0.2);
-  animation: fadeIn 1.5s ease;
+/* HEADER */
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-h1{
-  font-size:26px;
-  margin-bottom:10px;
+h1 {
+    font-size: 60px;
+    text-shadow: 0 0 20px #00ff9c;
 }
 
-.year{
-  font-size:18px;
-  opacity:0.9;
+.subtitle {
+    margin-top: 15px;
+    font-size: 18px;
+    opacity: 0.8;
 }
 
-.heart{
-  font-size:70px;
-  margin:20px 0;
-  animation: beat 1.2s infinite;
+/* BUTTON */
+.btn {
+    margin-top: 30px;
+    padding: 15px 40px;
+    border: 2px solid #00ff9c;
+    background: transparent;
+    color: #00ff9c;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
-p{
-  font-size:15px;
-  line-height:1.6;
+.btn:hover {
+    background: #00ff9c;
+    color: #020617;
 }
 
-.timer{
-  margin-top:20px;
-  font-size:14px;
-  background:rgba(255,255,255,0.2);
-  padding:12px;
-  border-radius:14px;
+/* SECTION */
+section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: auto;
 }
 
-footer{
-  margin-top:15px;
-  font-size:12px;
-  opacity:0.8;
+.card {
+    border: 1px solid #00ff9c;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
-@keyframes beat{
-  0%{transform:scale(1);}
-  25%{transform:scale(1.1);}
-  50%{transform:scale(1);}
-  75%{transform:scale(1.15);}
-  100%{transform:scale(1);}
+/* GLITCH */
+.glitch {
+    animation: glitch 1.5s infinite;
 }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(30px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* Kalpler */
-.heart-float{
-  position:absolute;
-  bottom:-20px;
-  font-size:20px;
-  animation: float 6s linear infinite;
-  opacity:0.7;
-}
-
-@keyframes float{
-  0%{transform:translateY(0); opacity:0;}
-  10%{opacity:1;}
-  100%{transform:translateY(-110vh); opacity:0;}
+@keyframes glitch {
+    0% { text-shadow: 2px 0 red; }
+    25% { text-shadow: -2px 0 cyan; }
+    50% { text-shadow: 2px 2px lime; }
+    75% { text-shadow: -2px -2px magenta; }
+    100% { text-shadow: 0 0 #00ff9c; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-  <h1>1. Yılımız Kutlu Olsun 💖</h1>
-  <div class="year">Seni hiç unutur muyum :)</div>
+<header>
+    <h1 class="glitch">303 Team</h1>
+    <div class="subtitle">Siber Güvenlik Ekibi</div>
+    <button class="btn" onclick="scrollToSection()">BİZ KİMİZ?</button>
+</header>
 
-  <div class="heart">❤️</div>
+<section id="about">
+    <div class="card">
+        <h2>🛡️ Hakkımızda</h2>
+        <p>
+            303 Sanal Ekibi, Eski bir tagdir ve yeniden tekrar dönmüstür. Kuruculari <b>Light</b> ve <b>Miprex</b> ve sonradan gelen <b>Rexon</b> olarak bilinir.
+          Biz her zaman en iyisiyiz. Dengimiz yok hedefimiz çok, Sanal tarihini cokertmeye geliyoruz
+        </p>
+    </div>
 
-  <p>
-    Seninle geçen her gün,  
-    bir öncekinden daha güzel oldu.  
-    Birlikte güldük, birlikte büyüdük.  
-    Daha nice yıllara… 🌸
-  </p>
-
-  <div class="timer" id="timer">
-    Birlikte geçen süre hesaplanıyor...
-  </div>
-
-  <footer>
-    Miprex tarafindan yapildi
-  </footer>
-</div>
+    <div class="card">
+        <h2>⚙️ Yaptiklarimiz</h2>
+        <ul>
+            <li>• Banned/Open</li>
+            <li>• Web tasarimi</li>
+            <li>• Takipci(bot)</li>
+            <li>• Gerekirse analarini bile sikeriz</li>
+        </ul>
+    </div>
+</section>
 
 <script>
-// ❗ BURAYA SEVGİLİ OLDUĞUNUZ TARİHİ YAZ
-const startDate = new Date("2025-01-04T00:00:00");
-
-function updateTimer(){
-  const now = new Date();
-  const diff = now - startDate;
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-
-  document.getElementById("timer").innerHTML =
-    `❤️ ${days} gün ${hours} saat ${minutes} dakika birlikteyiz ❤️`;
+function scrollToSection() {
+    document.getElementById("about").scrollIntoView({
+        behavior: "smooth"
+    });
 }
-
-setInterval(updateTimer,1000);
-updateTimer();
-
-// Uçan kalpler
-function createHeart(){
-  const heart = document.createElement("div");
-  heart.className = "heart-float";
-  heart.innerHTML = "💖";
-  heart.style.left = Math.random()*100 + "vw";
-  heart.style.animationDuration = (4 + Math.random()*4) + "s";
-  document.body.appendChild(heart);
-
-  setTimeout(()=>heart.remove(),8000);
-}
-
-setInterval(createHeart,600);
 </script>
 
 </body>
