@@ -1,125 +1,212 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>303 Siber Güvenlik Ekibi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İyi ki Doğdun Buse | 2026</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Consolas, monospace;
-}
+    <style>
+        :root {
+            --gold: #d4af37;
+            --soft-pink: #f8edeb;
+            --deep-dark: #0f0f0f;
+        }
 
-body {
-    background: #020617;
-    color: #00ff9c;
-}
+        body {
+            background-color: var(--deep-dark);
+            color: #ffffff;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-/* HEADER */
-header {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+        /* Hero Bölümü */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1920&q=80'); /* Arka plan görseli */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
 
-h1 {
-    font-size: 60px;
-    text-shadow: 0 0 20px #00ff9c;
-}
+        .hero h1 {
+            font-family: 'Cormorant+Garamond', serif;
+            font-size: 6rem;
+            margin-bottom: 0;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+        }
 
-.subtitle {
-    margin-top: 15px;
-    font-size: 18px;
-    opacity: 0.8;
-}
+        .hero p {
+            font-weight: 200;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
 
-/* BUTTON */
-.btn {
-    margin-top: 30px;
-    padding: 15px 40px;
-    border: 2px solid #00ff9c;
-    background: transparent;
-    color: #00ff9c;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-}
+        /* Özel Mesaj Bölümü */
+        .message-section {
+            padding: 150px 20px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0f0f0f 100%);
+        }
 
-.btn:hover {
-    background: #00ff9c;
-    color: #020617;
-}
+        .main-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.2;
+            color: var(--soft-pink);
+        }
 
-/* SECTION */
-section {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: auto;
-}
+        /* Fotoğraf Kartları */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            padding: 100px 20px;
+        }
 
-.card {
-    border: 1px solid #00ff9c;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-}
+        .card {
+            width: 350px;
+            height: 450px;
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: 0.5s ease;
+        }
 
-/* GLITCH */
-.glitch {
-    animation: glitch 1.5s infinite;
-}
+        .card:hover {
+            transform: translateY(-15px);
+            border-color: var(--gold);
+        }
 
-@keyframes glitch {
-    0% { text-shadow: 2px 0 red; }
-    25% { text-shadow: -2px 0 cyan; }
-    50% { text-shadow: 2px 2px lime; }
-    75% { text-shadow: -2px -2px magenta; }
-    100% { text-shadow: 0 0 #00ff9c; }
-}
-</style>
+        .card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: 0.5s; }
+        .card:hover img { filter: grayscale(0%); scale: 1.1; }
+
+        .card-text {
+            position: absolute;
+            bottom: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            width: 100%;
+        }
+
+        /* Buton */
+        .btn-surprise {
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            padding: 18px 50px;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.4s;
+            margin-top: 50px;
+        }
+
+        .btn-surprise:hover {
+            background: var(--gold);
+            color: black;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        footer {
+            padding: 60px;
+            text-align: center;
+            font-weight: 200;
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .main-quote { font-size: 2rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <h1 class="glitch">303 Team</h1>
-    <div class="subtitle">Siber Güvenlik Ekibi</div>
-    <button class="btn" onclick="scrollToSection()">BİZ KİMİZ?</button>
-</header>
+    <section class="hero">
+        <div data-aos="zoom-out" data-aos-duration="2000">
+            <p>DOGUM GUNUN KUTLU OLSUNN</p>
+            <h1>Buse</h1>
+          <p>DİVA HANIM</p>
+            <p>07.03.2026</p>
+        </div>
+    </section>
 
-<section id="about">
-    <div class="card">
-        <h2>🛡️ Hakkımızda</h2>
-        <p>
-            303 Sanal Ekibi, Eski bir tagdir ve yeniden tekrar dönmüstür. Kuruculari <b>Light</b> ve <b>Miprex</b> ve sonradan gelen <b>Rexon</b> olarak bilinir.
-          Biz her zaman en iyisiyiz. Dengimiz yok hedefimiz çok, Sanal tarihini cokertmeye geliyoruz
-        </p>
+    <section class="message-section">
+        <div data-aos="fade-up">
+            <div class="main-quote">
+                İYİ Kİ DOGDUN DİVA HANİM HEP MUTLU KAL HEP BENİMLE KAL İYİ Kİ VARSİN AMK #miprex
+            </div>
+            <button class="btn-surprise" onclick="startShow()">İYİKİ DOGDUNN</button><br>
+          Aşagiya kaydir
+        </div>
+    </section>
+
+    <div class="gallery">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <img src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1920&q=80' alt="Buse 1">
+            <div class="card-text">
+                <h3>Zarafet</h3>
+                <p>Her bakışında yeni bir dünya.</p>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1920&q=80" alt="Buse 2">
+            <div class="card-text">
+                <h3>Mutluluk</h3>
+                <p>En güzel kahkahaların sebebi.</p>
+            </div>
+        </div>
     </div>
 
-    <div class="card">
-        <h2>⚙️ Yaptiklarimiz</h2>
-        <ul>
-            <li>• Banned/Open</li>
-            <li>• Web tasarimi</li>
-            <li>• Takipci(bot)</li>
-            <li>• Gerekirse analarini bile sikeriz</li>
-        </ul>
-    </div>
-</section>
+    <footer>
+        SENİ ÇOK SEVİYORUM BUSE &bull; 2026
+    </footer>
 
-<script>
-function scrollToSection() {
-    document.getElementById("about").scrollIntoView({
-        behavior: "smooth"
-    });
-}
-</script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true });
 
+        function startShow() {
+            var duration = 5 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+              var timeLeft = animationEnd - Date.now();
+              if (timeLeft <= 0) return clearInterval(interval);
+              var particleCount = 50 * (timeLeft / duration);
+              
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
 </body>
-</html>
+        </html>
+    
