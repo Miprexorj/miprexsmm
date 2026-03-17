@@ -3,210 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyi ki Doğdun Buse | 2026</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-
+    <title>901 | Digital Universe</title>
     <style>
-        :root {
-            --gold: #d4af37;
-            --soft-pink: #f8edeb;
-            --deep-dark: #0f0f0f;
+        /* CSS AYARLARI */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background-color: var(--deep-dark);
-            color: #ffffff;
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
+            background-color: #08080a;
+            color: #e0e0e0;
+            line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* Hero Bölümü */
+        /* Navigasyon */
+        header {
+            background: rgba(10, 10, 15, 0.95);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1a1a2e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #00f2ff;
+            text-shadow: 0 0 10px #00f2ff;
+        }
+
+        nav a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #00f2ff;
+        }
+
+        /* Ana Bölüm */
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1920&q=80'); /* Arka plan görseli */
-            background-size: cover;
-            background-position: center;
+            background: radial-gradient(circle at center, #11112b 0%, #08080a 100%);
             text-align: center;
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-family: 'Cormorant+Garamond', serif;
-            font-size: 6rem;
-            margin-bottom: 0;
-            background: linear-gradient(to right, #fff, var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-style: italic;
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero h1 span {
+            color: #00f2ff;
+            filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
         }
 
         .hero p {
-            font-weight: 200;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            opacity: 0.8;
-            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 600px;
+            margin-bottom: 30px;
         }
 
-        /* Özel Mesaj Bölümü */
-        .message-section {
-            padding: 150px 20px;
-            text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0f0f0f 100%);
+        .btn {
+            padding: 12px 35px;
+            background: transparent;
+            color: #00f2ff;
+            border: 1px solid #00f2ff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: 0.4s;
+            letter-spacing: 1px;
         }
 
-        .main-quote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.2;
-            color: var(--soft-pink);
+        .btn:hover {
+            background: #00f2ff;
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
         }
 
-        /* Fotoğraf Kartları */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            padding: 100px 20px;
+        /* Özellikler Kartları */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 80px 10%;
+            background: #08080a;
         }
 
         .card {
-            width: 350px;
-            height: 450px;
-            position: relative;
+            background: #10101a;
+            padding: 40px;
             border-radius: 5px;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: 0.5s ease;
+            border-top: 2px solid #1a1a2e;
+            transition: 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-15px);
-            border-color: var(--gold);
+            border-top-color: #00f2ff;
+            transform: translateY(-5px);
         }
 
-        .card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: 0.5s; }
-        .card:hover img { filter: grayscale(0%); scale: 1.1; }
-
-        .card-text {
-            position: absolute;
-            bottom: 0;
-            padding: 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            width: 100%;
+        .card h3 {
+            margin-bottom: 15px;
+            color: #fff;
         }
 
-        /* Buton */
-        .btn-surprise {
-            border: 1px solid var(--gold);
-            background: transparent;
-            color: var(--gold);
-            padding: 18px 50px;
+        .card p {
             font-size: 0.9rem;
-            letter-spacing: 3px;
-            cursor: pointer;
-            transition: all 0.4s;
-            margin-top: 50px;
+            color: #777;
         }
 
-        .btn-surprise:hover {
-            background: var(--gold);
-            color: black;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-        }
-
+        /* Footer */
         footer {
-            padding: 60px;
             text-align: center;
-            font-weight: 200;
-            letter-spacing: 2px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3.5rem; }
-            .main-quote { font-size: 2rem; }
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #444;
+            border-top: 1px solid #111;
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <div data-aos="zoom-out" data-aos-duration="2000">
-            <p>DOGUM GUNUN KUTLU OLSUNN</p>
-            <h1>Buse</h1>
-          <p>DİVA HANIM</p>
-            <p>07.03.2026</p>
-        </div>
+    <header>
+        <div class="logo">901<span>.</span></div>
+        <nav>
+            <a href="#home">Terminal</a>
+            <a href="#features">Hizmetler</a>
+            <a href="#">Bağlan</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>901<span>CORE</span></h1>
+        <p>Gelişmiş dijital altyapı ve güvenlik odaklı web mimarisi.</p>
+        <a href="#features" class="btn">SİSTEMİ BAŞLAT</a>
     </section>
 
-    <section class="message-section">
-        <div data-aos="fade-up">
-            <div class="main-quote">
-                İYİ Kİ DOGDUN DİVA HANİM HEP MUTLU KAL HEP BENİMLE KAL İYİ Kİ VARSİN AMK #miprex
-            </div>
-            <button class="btn-surprise" onclick="startShow()">İYİKİ DOGDUNN</button><br>
-          Aşagiya kaydir
+    <section id="features" class="features">
+        <div class="card">
+            <h3>Siber Güvenlik</h3>
+            <p>Uçtan uca şifreleme ve zafiyet analizleri ile koruma.</p>
+        </div>
+        <div class="card">
+            <h3>Web Geliştirme</h3>
+            <p>Ultra hızlı, optimize edilmiş modern web panelleri.</p>
+        </div>
+        <div class="card">
+            <h3>Veri Yönetimi</h3>
+            <p>Karmaşık verilerin güvenli ve düzenli depolanması.</p>
         </div>
     </section>
-
-    <div class="gallery">
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <img src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1920&q=80' alt="Buse 1">
-            <div class="card-text">
-                <h3>Zarafet</h3>
-                <p>Her bakışında yeni bir dünya.</p>
-            </div>
-        </div>
-
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
-            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1920&q=80" alt="Buse 2">
-            <div class="card-text">
-                <h3>Mutluluk</h3>
-                <p>En güzel kahkahaların sebebi.</p>
-            </div>
-        </div>
-    </div>
 
     <footer>
-        SENİ ÇOK SEVİYORUM BUSE &bull; 2026
+        &copy; 2026 Proje 901. Tüm hakları saklıdır.
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ once: true });
-
-        function startShow() {
-            var duration = 5 * 1000;
-            var animationEnd = Date.now() + duration;
-            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-            function randomInRange(min, max) {
-              return Math.random() * (max - min) + min;
-            }
-
-            var interval = setInterval(function() {
-              var timeLeft = animationEnd - Date.now();
-              if (timeLeft <= 0) return clearInterval(interval);
-              var particleCount = 50 * (timeLeft / duration);
-              
-              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-            }, 250);
-        }
-    </script>
 </body>
-        </html>
-    
+</html>
